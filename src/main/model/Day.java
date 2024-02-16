@@ -7,18 +7,27 @@ import model.Activity;
 public class Day {
 
     private ArrayList<Activity> activitiesList;
-    private String day;
+    private int dayNumber;
 
-    public Day(String day) {
-        this.day = day;
+    public Day(int dayNumber) {
+        this.dayNumber = dayNumber;
         this.activitiesList = new ArrayList<Activity>();
+    }
+
+    public int getDayNumber() {
+        return dayNumber;
     }
 
     // REQUIRES: time of activity can't already be allotted to an activity existing in list
     // MODIFIES: this
-    // EFFECTS: adds activity to list of activities
+    // EFFECTS: adds activity to list of activities (to list according to day)
     public void addActivity(Activity activity) {
         activitiesList.add(activity);
+    }
+
+    // EFFECTS: searches through the list for name of activity and returns it
+    public Activity getActivity() {
+        return null;
     }
 
     // MODIFIES: this

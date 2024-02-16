@@ -4,32 +4,37 @@ package model;
 public class Activity {
 
     private String name;
-    private String date;
-    private String time;
+    private int day;
+    private int time;
     private double cost;
 
     //similar to library project where they had an enum?
     //private Category category; // food, accommodations, activities, other
 
-    public Activity(String name, String date, String time) {
+    public Activity(String name, int date, int time, double cost) {
         this.name = name;
-        this.date = date;
+        this.day = date;
         this.time = time;
+        this.cost = cost;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDate() {
-        return date;
+    public int getDay() {
+        return day;
     }
 
-    public String getTime() {
+    public int getTime() {
         return time;
     }
 
-    public Double getCost() {
+    public double getCost() {
         return cost;
     }
 
