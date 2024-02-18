@@ -21,9 +21,9 @@ public class DayTest {
         d1 = new Day(1);
         d2 = new Day(2);
 
-        LocalTime a1Time = LocalTime.of(7,30);
-        LocalTime a2Time = LocalTime.of(9,00);
-        LocalTime a3Time = LocalTime.of(13,45);
+        LocalTime a1Time = LocalTime.of(7, 30);
+        LocalTime a2Time = LocalTime.of(9, 00);
+        LocalTime a3Time = LocalTime.of(13, 45);
         a1 = new Activity("Fushimi Inari Shrine", 1, a1Time, 0.00);
         a2 = new Activity("Bamboo Forest", 1, a2Time, 0.00);
         a3 = new Activity("Disneyland", 2, a3Time, 100.00);

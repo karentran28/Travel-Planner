@@ -3,8 +3,7 @@
 ## *Travel Itinerary Planner*
 
 The overall idea of my project is to create an application that assists users in planning and organizing their travel
-trips. The application will include features such as activity organization and expense management.
-It is tailored to individuals who have any upcoming trips with the intention of traveling to various
+trips. It is tailored to individuals who have any upcoming trips with the intention of traveling to various
 places with numerous daily activities. It can help organize and breakdown what each day will look like during their
 trip. It will also allow them to get an estimate on the cost of the trip by including a breakdown of different 
 categories of where their expenses are being used such as flights, accommodations, foods, activities, other etc.

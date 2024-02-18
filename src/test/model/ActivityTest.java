@@ -2,6 +2,7 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalTime;
@@ -12,8 +13,8 @@ class ActivityTest {
     private Activity a2;
     private Activity a3;
     private LocalTime a1Time = LocalTime.of(7, 30);
-    private LocalTime a2Time = LocalTime.of(9,00);
-    private LocalTime a3Time = LocalTime.of(13,45);
+    private LocalTime a2Time = LocalTime.of(9, 00);
+    private LocalTime a3Time = LocalTime.of(13, 45);
 
     @BeforeEach
     public void setup() {
@@ -57,7 +58,7 @@ class ActivityTest {
     public void testGetDay() {
         assertEquals(2, a1.getDay());
         assertEquals(2, a2.getDay());
-        assertEquals(3 , a3.getDay());
+        assertEquals(3, a3.getDay());
     }
 
     @Test
@@ -69,7 +70,7 @@ class ActivityTest {
 
     @Test
     public void testSetTime() {
-        LocalTime testTime = LocalTime.of(10,00);
+        LocalTime testTime = LocalTime.of(10, 00);
         a2.setTime(testTime);
         assertEquals(testTime, a2.getTime());
     }

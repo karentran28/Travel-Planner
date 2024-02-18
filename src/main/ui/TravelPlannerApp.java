@@ -16,22 +16,39 @@ public class TravelPlannerApp {
     private String isFlying;
     private String haveAccommodations;
 
+    // EFFECTS: runs the travel planner application
     public TravelPlannerApp() {
         runPlanner();
     }
 
+    // EFFECTS: processes user input to create a new Planner
     private void runPlanner() {
         createPlanner();
         summarizePlanner();
         mainMenu();
     }
 
+    // CITE: https://github.students.cs.ubc.ca/CPSC210/TellerApp
+    // MODIFIES: this
+    // EFFECTS: processes user input
     public void mainMenu() {
-        displayMenu();
-        String command = scan.next();
-        processCommand(command);
+        boolean keepRunning = true;
+        String command;
+
+        while (keepRunning) {
+            displayMenu();
+            command = scan.next();
+
+            if (command.equals("q")) {
+                keepRunning = false;
+            } else {
+                processCommand(command);
+            }
+        }
+        System.out.println("Safe Travels! Goodbye!");
     }
 
+    // EFFECTS: displays the options users have
     private void displayMenu() {
         System.out.println("\nSelect from the following:");
         System.out.println("\ta -> add new activity");
@@ -40,6 +57,9 @@ public class TravelPlannerApp {
         System.out.println("\tq -> quit");
     }
 
+    // CITE: https://github.students.cs.ubc.ca/CPSC210/TellerApp
+    // MODIFIES: this
+    // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("a")) {
             addActivity();
@@ -47,9 +67,15 @@ public class TravelPlannerApp {
             viewActivities();
         } else if (command.equals("c")) {
             editActivity();
+        } else {
+            System.out.println("You have entered an input that is not an option.");
+            mainMenu();
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: Initializes a TravelPlanner, generates a list of Days, sets departing
+    //          and returning flight dates and sets the cost of accommodation based on user input
     private void createPlanner() {
         System.out.println("Where are you travelling to?");
         String plannerName = scan.next();
@@ -73,6 +99,7 @@ public class TravelPlannerApp {
         addAccommodations();
     }
 
+    // EFFECTS: provides a brief summary of Travel Planner created
     public void summarizePlanner() {
         System.out.println("Creating planner for " + myPlanner.getName());
         System.out.println("\tTotal Days on Travel: " + myPlanner.getTotalDays());
@@ -86,6 +113,8 @@ public class TravelPlannerApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds date of departing flight and date of returning flight based on user input
     public void addFlights() {
         if (isFlying.equals("yes")) {
             System.out.println("What day are you flying? Enter date in YYYY-MM-DD format.");
@@ -104,6 +133,8 @@ public class TravelPlannerApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds cost of accommodations based on user input
     public void addAccommodations() {
         if (haveAccommodations.equals("yes")) {
             System.out.println("Enter the total cost of accommodations in X.XX format.");
@@ -115,6 +146,8 @@ public class TravelPlannerApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: Initializes an Activity and adds it to given Day based on user input
     private void addActivity() {
         System.out.println("Please type the name of the activity you want to add.");
         String activityName = scan.next();
@@ -137,6 +170,7 @@ public class TravelPlannerApp {
         mainMenu();
     }
 
+    // displays the list of activities in given day prompted by user
     private void viewActivities() {
         System.out.println("Enter the day number you would like to view existing activities for.");
         int dayNumber = scan.nextInt();
@@ -154,6 +188,8 @@ public class TravelPlannerApp {
         mainMenu();
     }
 
+    // EFFECTS: Searches through list to find existing activity to edit based on user input, displays options
+    //          for users to edit
     private void editActivity() {
         System.out.println("What is the name of the activity that would you like to edit?");
         String chosenActivityName = scan.next();
@@ -172,6 +208,8 @@ public class TravelPlannerApp {
         chooseEditCommand(foundActivity, editCommand);
     }
 
+    // MODIFIES: this
+    // EFFECTS: executes the editing of existing activity based on user command
     private void chooseEditCommand(Activity chosenActivity, String editCommand) {
         if (editCommand.equals("a")) {
             System.out.println("Enter a new name for this activity.");
