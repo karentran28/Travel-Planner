@@ -3,7 +3,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,33 +13,16 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class TravelPlannerTest {
 
     private TravelPlanner testTravelPlanner;
-    private Day d1;
-    private Day d2;
-    private Activity a1;
-    private Activity a2;
-    private Activity a3;
 
     @BeforeEach
     public void setup() {
-        testTravelPlanner = new TravelPlanner("Japan", 10, 1000.00);
-
-        d1 = new Day(1);
-        d2 = new Day(2);
-
-        a1 = new Activity("Fushimi Inari Shrine", 2, 7, 0.00);
-        a2 = new Activity("Bamboo Forest", 2, 9, 0.00);
-        a3 = new Activity("Disneyland", 3, 10, 100.00);
-
-        d1.addActivity(a1);
-        d1.addActivity(a2);
-        d2.addActivity(a3);
-
+        testTravelPlanner = new TravelPlanner("Japan", 4, 1000.00);
     }
 
     @Test
     public void testConstructor() {
         assertEquals("Japan", testTravelPlanner.getName());
-        assertEquals(10, testTravelPlanner.getTotalDays());
+        assertEquals(4, testTravelPlanner.getTotalDays());
         assertEquals(1000.00, testTravelPlanner.getBudget());
     }
 
@@ -49,7 +33,7 @@ public class TravelPlannerTest {
 
     @Test
     public void testGetTotalDays() {
-        assertEquals(10, testTravelPlanner.getTotalDays());
+        assertEquals(4, testTravelPlanner.getTotalDays());
     }
 
     @Test
@@ -60,45 +44,52 @@ public class TravelPlannerTest {
     @Test
     public void testGetDepartingFlight() {
         assertNull(testTravelPlanner.getDepartingFlight());
-        testTravelPlanner.setDepartingFlight("06/20/2024");
-        assertEquals("06/20/2024", testTravelPlanner.getDepartingFlight());
+        LocalDate testDate = LocalDate.of(2024, 6, 20);
+        testTravelPlanner.setDepartingFlight(testDate);
+        assertEquals(testDate, testTravelPlanner.getDepartingFlight());
     }
 
     @Test
     public void testSetDepartingFlight() {
-        testTravelPlanner.setDepartingFlight("04/28/2024");
-        assertEquals("04/28/2024", testTravelPlanner.getDepartingFlight());
+        LocalDate testDate = LocalDate.of(2024, 4, 28);
+        testTravelPlanner.setDepartingFlight(testDate);
+        assertEquals(testDate, testTravelPlanner.getDepartingFlight());
     }
 
     @Test
     public void testGetReturningFlight() {
         assertNull(testTravelPlanner.getReturningFlight());
-        testTravelPlanner.setReturningFlight("05/10/2024");
-        assertEquals("05/10/2024", testTravelPlanner.getReturningFlight());
+        LocalDate testDate = LocalDate.of(2024, 05, 10);
+        testTravelPlanner.setReturningFlight(testDate);
+        assertEquals(testDate, testTravelPlanner.getReturningFlight());
     }
 
     @Test
     public void testSetReturningFlight() {
-        testTravelPlanner.setReturningFlight("03/18/2024");
-        assertEquals("03/18/2024", testTravelPlanner.getReturningFlight());
+        LocalDate testDate = LocalDate.of(2024, 4, 28);
+        testTravelPlanner.setReturningFlight(testDate);
+        assertEquals(testDate, testTravelPlanner.getReturningFlight());
     }
 
     @Test
     public void testGetAccommodation() {
         assertEquals(0.00, testTravelPlanner.getAccommodation());
+        testTravelPlanner.setAccommodation(100.75);
+        assertEquals(100.75, testTravelPlanner.getAccommodation());
     }
 
     @Test
     public void testSetAccommodation() {
         testTravelPlanner.setAccommodation(200.00);
         assertEquals(200.00, testTravelPlanner.getAccommodation());
+        testTravelPlanner.setAccommodation(300.00);
+        assertEquals(300.00, testTravelPlanner.getAccommodation());
     }
 
     @Test
     public void testGetDaysList() {
-        List<Day> days = testTravelPlanner.generateDaysList(testTravelPlanner.getTotalDays());
         int totalDays = testTravelPlanner.getTotalDays();
-
+        List<Day> days = testTravelPlanner.generateDaysList(totalDays);
         assertEquals(totalDays, days.size());
     }
 
@@ -108,6 +99,10 @@ public class TravelPlannerTest {
         testTravelPlanner.generateDaysList(total);
 
         assertEquals(total, testTravelPlanner.getdaysList().size());
+        assertEquals(1, testTravelPlanner.getdaysList().get(0).getDayNumber());
+        assertEquals(2, testTravelPlanner.getdaysList().get(1).getDayNumber());
+        assertEquals(3, testTravelPlanner.getdaysList().get(2).getDayNumber());
+        assertEquals(4, testTravelPlanner.getdaysList().get(3).getDayNumber());
     }
 
     @Test
@@ -117,8 +112,44 @@ public class TravelPlannerTest {
 
         int testNum = 3;
         Day testDay = testTravelPlanner.findDay(testNum);
-
         assertEquals(testNum, testDay.getDayNumber());
+        assertNull(testTravelPlanner.findDay(100));
     }
 
+    @Test
+    public void testSearchForActivity() {
+        Day d1 = new Day(1);
+        Day d2 = new Day(2);
+        LocalTime a1Time = LocalTime.of(7,30);
+        LocalTime a2Time = LocalTime.of(9,00);
+        LocalTime a3Time = LocalTime.of(13,45);
+        Activity a1 = new Activity("Fushimi Inari Shrine", 1, a1Time, 0.00);
+        Activity a2 = new Activity("Bamboo Forest", 1, a2Time, 0.00);
+        Activity a3 = new Activity("Disneyland", 2, a3Time, 100.00);
+        d1.addActivity(a1);
+        d1.addActivity(a2);
+        d2.addActivity(a3);
+
+        testTravelPlanner.addDay(d1);
+        testTravelPlanner.addDay(d2);
+
+        assertEquals(a1, testTravelPlanner.searchForActivity("Fushimi Inari Shrine"));
+        assertEquals(a2, testTravelPlanner.searchForActivity("Bamboo Forest"));
+        assertEquals(a3, testTravelPlanner.searchForActivity("Disneyland"));
+        assertNull(testTravelPlanner.searchForActivity("Osaka"));
+    }
+
+    @Test
+    public void addDay() {
+        Day d1 = new Day(1);
+        Day d2 = new Day(2);
+
+        testTravelPlanner.addDay(d1);
+        testTravelPlanner.addDay(d2);
+
+        List<Day> testList = testTravelPlanner.getdaysList();
+        assertEquals(testList, testTravelPlanner.getdaysList());
+        assertEquals(d1, testTravelPlanner.getdaysList().get(0));
+        assertEquals(d2, testTravelPlanner.getdaysList().get(1));
+    }
 }

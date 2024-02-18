@@ -1,9 +1,8 @@
 package model;
 
 import java.util.ArrayList;
-import model.Activity;
 
-// Represents a day including a list of activities scheduled
+// Represents a day of the trip including a day number and a list of activities scheduled
 public class Day {
 
     private ArrayList<Activity> activitiesList;
@@ -11,31 +10,27 @@ public class Day {
 
     public Day(int dayNumber) {
         this.dayNumber = dayNumber;
-        this.activitiesList = new ArrayList<Activity>();
+        this.activitiesList = new ArrayList<>();
     }
 
     public int getDayNumber() {
         return dayNumber;
     }
 
-    // REQUIRES: time of activity can't already be allotted to an activity existing in list
+    // REQUIRES: time of activity can't already be allotted to an existing activity in list
     // MODIFIES: this
-    // EFFECTS: adds activity to list of activities (to list according to day)
+    // EFFECTS: adds activity to list of activities for the day
     public void addActivity(Activity activity) {
         activitiesList.add(activity);
     }
 
-    // EFFECTS: searches through the list for name of activity and returns it
-    public Activity getActivity() {
-        return null;
+    // REQUIRES: must have existing activity at given index
+    // EFFECTS: returns activity at index
+    public Activity getActivity(int index) {
+        return activitiesList.get(index);
     }
 
-    // MODIFIES: this
-    // EFFECTS: removes activity from list of activities
-    public void removeActivity(Activity activity) {
-        activitiesList.remove(activity);
-    }
-
+    // EFFECTS: returns list of activities for the day
     public ArrayList<Activity> getActivitiesList() {
         return activitiesList;
     }

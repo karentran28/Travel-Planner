@@ -16,11 +16,9 @@ could be in organizing our travel plans. I plan to go on many more trips in the 
 undoubtedly be useful once completed!
 
 ## *User Stories*
-- As a user, I want to be able to create or delete activities
-- As a user, I want to be able to add an activity to my list of activities 
+- As a user, I want to be able to create a new activity
+- As a user, I want to be able to add an activity to my list of activities according to the day of the activity
 - As a user, I want to be able to select a day and view the list of activities for that day
-- As a user, I want to be able to update my activities (rename, change the date, change the time)
-- As a user, I want to be able to view my list of expenses for the trip including a breakdown of the expenses into
-categories such as food, accommodations, flights etc.
-- As a user, I want to be able to add pictures of my trip to a collection of pictures
+- As a user, I want to be able to edit my activities (rename, change time, change cost)
+
 

@@ -1,43 +1,47 @@
 package model;
 
-//Represents an activity having a name, date, and time
+import java.time.LocalTime;
+
+//Represents an activity having a name, day, time, and cost (in dollars)
 public class Activity {
 
-    private String name;
-    private int day;
-    private int time;
-    private double cost;
+    private String name;        // the name of the activity
+    private int day;            // the day the activity is set for
+    private LocalTime time;     // the time of the activity
+    private double cost;        // the cost of the activity
 
-    //similar to library project where they had an enum?
-    //private Category category; // food, accommodations, activities, other
-
-    public Activity(String name, int date, int time, double cost) {
+    public Activity(String name, int day, LocalTime time, double cost) {
         this.name = name;
-        this.day = date;
+        this.day = day;
         this.time = time;
         this.cost = cost;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getDay() {
         return day;
     }
 
-    public int getTime() {
+    public LocalTime getTime() {
         return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     public double getCost() {
         return cost;
     }
 
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
 }
-
-
