@@ -78,7 +78,7 @@ public class TravelPlannerApp {
     //          and returning flight dates and sets the cost of accommodation based on user input
     private void createPlanner() {
         System.out.println("Where are you travelling to?");
-        String plannerName = scan.next();
+        String plannerName = scan.nextLine();
 
         System.out.println("How many days are you going for?");
         int totalDays = scan.nextInt();
@@ -91,11 +91,12 @@ public class TravelPlannerApp {
         myPlanner.generateDaysList(myPlanner.getTotalDays());
 
         System.out.println("Are you flying to " + plannerName + "? Please type 'yes' or 'no'.");
-        isFlying = scan.next();
+        scan.nextLine();
+        isFlying = scan.nextLine();
         addFlights();
 
         System.out.println("Do you have accommodations booked? Please type 'yes' or 'no'.");
-        haveAccommodations = scan.next();
+        haveAccommodations = scan.nextLine();
         addAccommodations();
     }
 
@@ -118,17 +119,17 @@ public class TravelPlannerApp {
     public void addFlights() {
         if (isFlying.equals("yes")) {
             System.out.println("What day are you flying? Enter date in YYYY-MM-DD format.");
-            String departingFlightString = scan.next();
+            String departingFlightString = scan.nextLine();
             LocalDate departingFlightDate = LocalDate.parse(departingFlightString);
             myPlanner.setDepartingFlight(departingFlightDate);
 
             System.out.println("What day are you flying home? Enter in YYYY-MM-DD format.");
-            String returningFlightString = scan.next();
+            String returningFlightString = scan.nextLine();
             LocalDate returningFlightDate = LocalDate.parse(returningFlightString);
             myPlanner.setReturningFlight(returningFlightDate);
         } else if (!isFlying.equals("no")) {
             System.out.println("Sorry " + isFlying + " is not an option. Please type 'yes' or 'no'.");
-            isFlying = scan.next();
+            isFlying = scan.nextLine();
             addFlights();
         }
     }
@@ -141,8 +142,10 @@ public class TravelPlannerApp {
             myPlanner.setAccommodation(scan.nextDouble());
         } else if (!haveAccommodations.equals("no")) {
             System.out.println("Sorry " + haveAccommodations + " is not an option. Please type 'yes' or 'no'.");
-            haveAccommodations = scan.next();
+            scan.nextLine();
+            haveAccommodations = scan.nextLine();
             addAccommodations();
+
         }
     }
 
@@ -150,13 +153,15 @@ public class TravelPlannerApp {
     // EFFECTS: Initializes an Activity and adds it to given Day based on user input
     private void addActivity() {
         System.out.println("Please type the name of the activity you want to add.");
-        String activityName = scan.next();
+        scan.nextLine();
+        String activityName = scan.nextLine();
 
         System.out.println("Which day is this activity planned for?");
         int activityDay = scan.nextInt();
 
         System.out.println("Enter the time of this activity in HH:mm format.");
-        String timeInString = scan.next();
+        scan.nextLine();
+        String timeInString = scan.nextLine();
         LocalTime activityTime = LocalTime.parse(timeInString);
 
         System.out.println("What is the estimated cost of the activity?");
@@ -192,7 +197,8 @@ public class TravelPlannerApp {
     //          for users to edit
     private void editActivity() {
         System.out.println("What is the name of the activity that would you like to edit?");
-        String chosenActivityName = scan.next();
+        scan.nextLine();
+        String chosenActivityName = scan.nextLine();
         Activity foundActivity = myPlanner.searchForActivity(chosenActivityName);
         if (foundActivity == null) {
             System.out.println("Sorry there is no activity named " + chosenActivityName);
@@ -204,34 +210,34 @@ public class TravelPlannerApp {
         System.out.println("\tb -> edit time");
         System.out.println("\tc -> edit cost");
         System.out.println("\te -> exit");
-        String editCommand = scan.next();
+        String editCommand = scan.nextLine();
         chooseEditCommand(foundActivity, editCommand);
     }
 
     // MODIFIES: this
     // EFFECTS: executes the editing of existing activity based on user command
     private void chooseEditCommand(Activity chosenActivity, String editCommand) {
+        if (editCommand.equals("e")) {
+            mainMenu();
+        }
+
         if (editCommand.equals("a")) {
             System.out.println("Enter a new name for this activity.");
-            String newName = scan.next();
+            String newName = scan.nextLine();
             chosenActivity.setName(newName);
             System.out.println("Changed to " + newName);
-            mainMenu();
         } else if (editCommand.equals("b")) {
             System.out.println("Enter a new time for this activity in HH:mm format.");
-            String newTimeString = scan.next();
+            String newTimeString = scan.nextLine();
             LocalTime newTime = LocalTime.parse(newTimeString);
             chosenActivity.setTime(newTime);
             System.out.println("Changed to " + newTime);
-            mainMenu();
         } else if (editCommand.equals("c")) {
             System.out.println("Enter the new cost for this activity in XX.XX format.");
             double newCost = scan.nextDouble();
             chosenActivity.setCost(newCost);
             System.out.println("Changed to " + newCost);
-            mainMenu();
-        } else if (editCommand.equals("e")) {
-            mainMenu();
         }
+        mainMenu();
     }
 }
