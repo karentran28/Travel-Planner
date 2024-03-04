@@ -19,5 +19,7 @@ undoubtedly be useful once completed!
 - As a user, I want to be able to add an activity to my list of activities according to the day of the activity
 - As a user, I want to be able to select a day and view the list of activities for that day
 - As a user, I want to be able to edit my activities (rename, change time, change cost)
+- As a user, I want to be able to quit the application and be reminded to save my planner
+- As a user, I want to have the option of reloading from where I left off at some earlier time
 
 
