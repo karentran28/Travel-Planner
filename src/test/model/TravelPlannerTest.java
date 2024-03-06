@@ -72,21 +72,6 @@ public class TravelPlannerTest {
     }
 
     @Test
-    public void testGetAccommodation() {
-        assertEquals(0.00, testTravelPlanner.getAccommodation());
-        testTravelPlanner.setAccommodation(100.75);
-        assertEquals(100.75, testTravelPlanner.getAccommodation());
-    }
-
-    @Test
-    public void testSetAccommodation() {
-        testTravelPlanner.setAccommodation(200.00);
-        assertEquals(200.00, testTravelPlanner.getAccommodation());
-        testTravelPlanner.setAccommodation(300.00);
-        assertEquals(300.00, testTravelPlanner.getAccommodation());
-    }
-
-    @Test
     public void testGetDaysList() {
         int totalDays = testTravelPlanner.getTotalDays();
         List<Day> days = testTravelPlanner.generateDaysList(totalDays);
@@ -98,11 +83,11 @@ public class TravelPlannerTest {
         int total = testTravelPlanner.getTotalDays();
         testTravelPlanner.generateDaysList(total);
 
-        assertEquals(total, testTravelPlanner.getdaysList().size());
-        assertEquals(1, testTravelPlanner.getdaysList().get(0).getDayNumber());
-        assertEquals(2, testTravelPlanner.getdaysList().get(1).getDayNumber());
-        assertEquals(3, testTravelPlanner.getdaysList().get(2).getDayNumber());
-        assertEquals(4, testTravelPlanner.getdaysList().get(3).getDayNumber());
+        assertEquals(total, testTravelPlanner.getDaysList().size());
+        assertEquals(1, testTravelPlanner.getDaysList().get(0).getDayNumber());
+        assertEquals(2, testTravelPlanner.getDaysList().get(1).getDayNumber());
+        assertEquals(3, testTravelPlanner.getDaysList().get(2).getDayNumber());
+        assertEquals(4, testTravelPlanner.getDaysList().get(3).getDayNumber());
     }
 
     @Test
@@ -120,9 +105,9 @@ public class TravelPlannerTest {
     public void testSearchForActivity() {
         Day d1 = new Day(1);
         Day d2 = new Day(2);
-        LocalTime a1Time = LocalTime.of(7,30);
-        LocalTime a2Time = LocalTime.of(9,00);
-        LocalTime a3Time = LocalTime.of(13,45);
+        LocalTime a1Time = LocalTime.of(7, 30);
+        LocalTime a2Time = LocalTime.of(9, 00);
+        LocalTime a3Time = LocalTime.of(13, 45);
         Activity a1 = new Activity("Fushimi Inari Shrine", 1, a1Time, 0.00);
         Activity a2 = new Activity("Bamboo Forest", 1, a2Time, 0.00);
         Activity a3 = new Activity("Disneyland", 2, a3Time, 100.00);
@@ -147,9 +132,9 @@ public class TravelPlannerTest {
         testTravelPlanner.addDay(d1);
         testTravelPlanner.addDay(d2);
 
-        List<Day> testList = testTravelPlanner.getdaysList();
-        assertEquals(testList, testTravelPlanner.getdaysList());
-        assertEquals(d1, testTravelPlanner.getdaysList().get(0));
-        assertEquals(d2, testTravelPlanner.getdaysList().get(1));
+        List<Day> testList = testTravelPlanner.getDaysList();
+        assertEquals(testList, testTravelPlanner.getDaysList());
+        assertEquals(d1, testTravelPlanner.getDaysList().get(0));
+        assertEquals(d2, testTravelPlanner.getDaysList().get(1));
     }
 }

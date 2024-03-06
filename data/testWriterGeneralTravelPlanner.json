@@ -1,0 +1,25 @@
+{
+    "totalDays": 2,
+    "name": "Japan",
+    "totalTripDays": [
+        {
+            "number": 1,
+            "activities": [{
+                "cost": 20,
+                "name": "sushi",
+                "time": "12:00",
+                "day": 1
+            }]
+        },
+        {
+            "number": 2,
+            "activities": [{
+                "cost": 0,
+                "name": "Inari Temple",
+                "time": "14:00",
+                "day": 2
+            }]
+        }
+    ],
+    "budget": 1000
+}

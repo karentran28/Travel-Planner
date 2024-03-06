@@ -1,17 +1,20 @@
 package model;
 
+import org.json.JSONArray;
+import persistance.Writable;
+import org.json.JSONObject;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a travel itinerary including the name of the trip, the total days of the trip,
 // and the estimated budget of the trip
-public class TravelPlanner {
+public class TravelPlanner implements Writable {
 
     private String name;
     private int totalDays;
     private double budget;
-    private double accommodation;       // the cost of accommodations
     private LocalDate departingFlight;     // the date of departing flight
     private LocalDate returningFlight;     // the date of the return flight
     private List<Day> totalTripDays;    // a list of days, each representing one Day of the trip
@@ -20,7 +23,6 @@ public class TravelPlanner {
         this.name = name;
         this.totalDays = totalDays;
         this.budget = budget;
-        accommodation = 0.00;
         departingFlight = null;
         returningFlight = null;
         totalTripDays = new ArrayList<>();
@@ -54,15 +56,7 @@ public class TravelPlanner {
         this.returningFlight = returningFlight;
     }
 
-    public double getAccommodation() {
-        return accommodation;
-    }
-
-    public void setAccommodation(double accommodation) {
-        this.accommodation = accommodation;
-    }
-
-    public List<Day> getdaysList() {
+    public List<Day> getDaysList() {
         return totalTripDays;
     }
 
@@ -101,8 +95,31 @@ public class TravelPlanner {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds a Day into totalTripDays list (only used for testing)
+    // EFFECTS: adds a Day into totalTripDays list
     public void addDay(Day day) {
         totalTripDays.add(day);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("totalDays", totalDays);
+        json.put("budget", budget);
+        json.put("returningFlight", returningFlight);
+        json.put("departingFlight", departingFlight);
+        json.put("totalTripDays", daysToJson());
+        return json;
+    }
+
+    // EFFECTS: returns JSON array of days in this Travel Planner
+    private JSONArray daysToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Day d : totalTripDays) {
+            jsonArray.put(d.toJson());
+        }
+
+        return jsonArray;
     }
 }

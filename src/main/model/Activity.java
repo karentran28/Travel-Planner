@@ -1,9 +1,12 @@
 package model;
 
+import persistance.Writable;
+import org.json.JSONObject;
+
 import java.time.LocalTime;
 
 //Represents an activity having a name, day, time, and cost (in dollars)
-public class Activity {
+public class Activity implements Writable {
 
     private String name;        // the name of the activity
     private int day;            // the day the activity is set for
@@ -43,5 +46,15 @@ public class Activity {
 
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("day", day);
+        json.put("time", time);
+        json.put("cost", cost);
+        return json;
     }
 }

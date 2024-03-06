@@ -1,0 +1,42 @@
+{
+    "totalDays": 4,
+    "name": "japan",
+    "totalTripDays": [
+        {
+            "number": 1,
+            "activities": []
+        },
+        {
+            "number": 2,
+            "activities": [
+                {
+                    "cost": 20,
+                    "name": "sushi",
+                    "time": "12:00",
+                    "day": 2
+                },
+                {
+                    "cost": 25,
+                    "name": "Inari temple",
+                    "time": "14:00",
+                    "day": 2
+                }
+            ]
+        },
+        {
+            "number": 3,
+            "activities": [{
+                "cost": 120,
+                "name": "ski",
+                "time": "14:00",
+                "day": 3
+            }]
+        },
+        {
+            "number": 4,
+            "activities": []
+        }
+    ],
+    "departingFlight": "2024-04-04",
+    "budget": 2000
+}
