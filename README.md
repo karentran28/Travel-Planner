@@ -22,14 +22,20 @@ undoubtedly be useful once completed!
 - As a user, I want to have the option to save my Travel Planner to file
 - As a user, I want to have the option of reloading my existing Travel Planner from file
 
-  // creating a planner
-  // maybe each day can be a different tab on a tabbed pane
-  // easily able to click on whichever tab they want to see their activities
-  - each activity should be clickable, when clicked, they can then edit the activity or delete it
+## *Instructions for Grader*
+First Action: adding new activity to planner:
+- to add a new activity to the planner, first load in the planner by clicking the load planner button
+- next, click on the add activity button and fill in all input fields before hitting the submit button
 
-      // on the side their will be a button panel
-    - // to add new activity
-    - // save, load, and create new planner buttons
-- maybe on the top of the tabs pane their will be the summarizer where they going, how many days, departure, returning,
-- budget
-  
+Second Action: viewing list of activity by day:
+- to view the list of activities for a specific day, click on any of the day buttons on the left-hand side
+- each day button has a corresponding panel that displays the activities list for that day
+
+Visual Component:
+- the visual component is the airplane image on the top right of the application that appears when the program runs
+
+Save:
+- to save the travel planner, press the save button on the top left-hand side of the program
+
+Load:
+- to load the travel planner, press the load button on the top left-hand side of the program

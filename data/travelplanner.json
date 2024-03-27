@@ -17,6 +17,12 @@
                     "name": "shopping",
                     "time": "14:00",
                     "day": 1
+                },
+                {
+                    "cost": 700,
+                    "name": "Land in Japan!",
+                    "time": "07:00",
+                    "day": 1
                 }
             ]
         },
@@ -48,11 +54,21 @@
         },
         {
             "number": 4,
-            "activities": []
+            "activities": [{
+                "cost": 100,
+                "name": "train to Kyoto",
+                "time": "09:00",
+                "day": 4
+            }]
         },
         {
             "number": 5,
-            "activities": []
+            "activities": [{
+                "cost": 800,
+                "name": "Fly home!",
+                "time": "22:00",
+                "day": 5
+            }]
         }
     ],
     "departingFlight": "2024-05-05",

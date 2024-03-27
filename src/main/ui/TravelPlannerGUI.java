@@ -16,7 +16,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 // represents a graphical user interface of the Travel Planner application
-public class TravelPlannerGui implements ActionListener {
+public class TravelPlannerGUI implements ActionListener {
 
     private TravelPlanner travelPlanner;
     public static final String JSON_FILE = "./data/travelplanner.json";
@@ -47,7 +47,7 @@ public class TravelPlannerGui implements ActionListener {
 
     // MODIFIES: this
     // EFFECTS: builds the main frame of GUI and adds all panels
-    public TravelPlannerGui() {
+    public TravelPlannerGUI() {
         mainFrame = new JFrame(); //creates the frame
         mainFrame.setTitle("Travel Planner");
         mainFrame.setSize(1000, 800); // opens frame to size
@@ -83,7 +83,7 @@ public class TravelPlannerGui implements ActionListener {
         imagePanel.setLayout(new BorderLayout());
         imagePanel.setBackground(new Color(231, 212, 231));
 
-        ImageIcon image = new ImageIcon(getClass().getResource("airplanelogo.jpg"));
+        ImageIcon image = new ImageIcon("./data/airplanelogo.jpg");
         Image adjustImage = image.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         ImageIcon adjustedImage = new ImageIcon(adjustImage);
         imageLabel = new JLabel(adjustedImage);
@@ -383,14 +383,12 @@ public class TravelPlannerGui implements ActionListener {
     //EFFECTS: iterates over day panels and shows corresponding day with activities depending
     //         on which day button is clicked, hides all other panels
     public void choosePanel(String day) {
-        boolean showPanel = false;
         Component[] components = holdDayPanel.getComponents();
         for (Component component : components) {
             if (component instanceof JPanel) {
                 JPanel panel = (JPanel) component;
                 if (panel.getName() != null && panel.getName().equals("Day " + day.substring(4))) {
                     panel.setVisible(true);
-                    showPanel = true;
                     holdDayPanel.revalidate();
                     holdDayPanel.repaint();
                 } else {

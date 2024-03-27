@@ -7,7 +7,7 @@ public class Main {
     //          throws FileNotFoundException if file cannot be found.
     public static void main(String[] args)  {
         try {
-            new TravelPlannerGui();
+            new TravelPlannerGUI();
             new TravelPlannerApp();
         } catch (FileNotFoundException e) {
             System.out.println("File not found. Unable to run application.");
