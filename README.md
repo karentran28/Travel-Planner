@@ -22,4 +22,14 @@ undoubtedly be useful once completed!
 - As a user, I want to have the option to save my Travel Planner to file
 - As a user, I want to have the option of reloading my existing Travel Planner from file
 
+  // creating a planner
+  // maybe each day can be a different tab on a tabbed pane
+  // easily able to click on whichever tab they want to see their activities
+  - each activity should be clickable, when clicked, they can then edit the activity or delete it
 
+      // on the side their will be a button panel
+    - // to add new activity
+    - // save, load, and create new planner buttons
+- maybe on the top of the tabs pane their will be the summarizer where they going, how many days, departure, returning,
+- budget
+  
