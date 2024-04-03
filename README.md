@@ -39,3 +39,51 @@ Save:
 
 Load:
 - to load the travel planner, press the load button on the top left-hand side of the program
+
+## *Phase 4: Task: 2*
+Wed Apr 03 12:38:30 PDT 2024
+New activity created.
+Wed Apr 03 12:38:30 PDT 2024
+Added new activity
+Wed Apr 03 12:38:30 PDT 2024
+New activity created.
+Wed Apr 03 12:38:30 PDT 2024
+Added new activity
+Wed Apr 03 12:38:30 PDT 2024
+New activity created.
+Wed Apr 03 12:38:30 PDT 2024
+Added new activity
+Wed Apr 03 12:38:30 PDT 2024
+New activity created.
+Wed Apr 03 12:38:30 PDT 2024
+Added new activity
+Wed Apr 03 12:38:30 PDT 2024
+New activity created.
+Wed Apr 03 12:38:30 PDT 2024
+Added new activity
+Wed Apr 03 12:38:30 PDT 2024
+New activity created.
+Wed Apr 03 12:38:30 PDT 2024
+Added new activity
+Wed Apr 03 12:38:30 PDT 2024
+New activity created.
+Wed Apr 03 12:38:30 PDT 2024
+Added new activity
+Wed Apr 03 12:38:30 PDT 2024
+New activity created.
+Wed Apr 03 12:38:30 PDT 2024
+Added new activity
+Wed Apr 03 12:38:30 PDT 2024
+New activity created.
+Wed Apr 03 12:38:30 PDT 2024
+Added new activity
+Wed Apr 03 12:38:30 PDT 2024
+Loaded travel planner.
+Wed Apr 03 12:38:39 PDT 2024
+New activity created.
+Wed Apr 03 12:38:39 PDT 2024
+Added new activity
+Wed Apr 03 12:38:41 PDT 2024
+Saved travel planner to file.
+
+Process finished with exit code 0

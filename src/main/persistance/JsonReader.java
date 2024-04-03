@@ -1,8 +1,6 @@
 package persistance;
 
-import model.Activity;
-import model.Day;
-import model.TravelPlanner;
+import model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -63,6 +61,7 @@ public class JsonReader {
         }
 
         addDaysList(tp, jsonObject);
+        EventLog.getInstance().logEvent(new Event("Loaded travel planner."));
         return tp;
     }
 

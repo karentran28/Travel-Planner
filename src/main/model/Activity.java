@@ -18,6 +18,7 @@ public class Activity implements Writable {
         this.day = day;
         this.time = time;
         this.cost = cost;
+        EventLog.getInstance().logEvent(new Event("New activity created."));
     }
 
     public String getName() {
@@ -26,6 +27,7 @@ public class Activity implements Writable {
 
     public void setName(String name) {
         this.name = name;
+        EventLog.getInstance().logEvent(new Event("Name of activity set."));
     }
 
     public int getDay() {
@@ -38,6 +40,7 @@ public class Activity implements Writable {
 
     public void setTime(LocalTime time) {
         this.time = time;
+        EventLog.getInstance().logEvent(new Event("Time of activity set."));
     }
 
     public double getCost() {
@@ -46,6 +49,7 @@ public class Activity implements Writable {
 
     public void setCost(double cost) {
         this.cost = cost;
+        EventLog.getInstance().logEvent(new Event("Cost of activity set."));
     }
 
     @Override

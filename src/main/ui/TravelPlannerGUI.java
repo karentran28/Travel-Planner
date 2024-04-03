@@ -2,6 +2,8 @@ package ui;
 
 import model.Activity;
 import model.Day;
+import model.Event;
+import model.EventLog;
 import model.TravelPlanner;
 import persistance.JsonReader;
 import persistance.JsonWriter;
@@ -10,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalTime;
@@ -60,13 +64,27 @@ public class TravelPlannerGUI implements ActionListener {
 
         setTopPanel();
         setButtonPanel();
+        setHoldDayPanel();
 
+        mainFrame.setVisible(true); // makes the frame visible by setting boolean to true
+        mainFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                EventLog eventlog = EventLog.getInstance();
+                for (Event event : eventlog) {
+                    System.out.println(event.toString());
+                }
+            }
+        });
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates a panel to hold all days
+    public void setHoldDayPanel() {
         holdDayPanel = new JPanel(new FlowLayout());
         holdDayPanel.setBackground(new Color(231, 212, 231));
         JScrollPane scrollPane = new JScrollPane(holdDayPanel); // Add scrolling capability
         mainPanel.add(scrollPane, BorderLayout.CENTER);
-
-        mainFrame.setVisible(true); // makes the frame visible by setting boolean to true
     }
 
     // MODIFIES: this
@@ -374,7 +392,6 @@ public class TravelPlannerGUI implements ActionListener {
             jsonWriter.open();
             jsonWriter.write(travelPlanner);
             jsonWriter.close();
-            System.out.println("Saved " + travelPlanner.getName() + " to " + JSON_FILE);
         } catch (FileNotFoundException e) {
             System.out.println(JSON_FILE + " not found. Unable to write to file.");
         }

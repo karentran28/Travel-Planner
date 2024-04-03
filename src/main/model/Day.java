@@ -26,6 +26,7 @@ public class Day implements Writable {
     // EFFECTS: adds activity to list of activities for the day
     public void addActivity(Activity activity) {
         activitiesList.add(activity);
+        EventLog.getInstance().logEvent(new Event("Added new activity"));
     }
 
     // REQUIRES: must have existing activity at given index

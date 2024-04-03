@@ -28,12 +28,14 @@
         },
         {
             "number": 2,
-            "activities": [{
-                "cost": 200,
-                "name": "ski",
-                "time": "09:00",
-                "day": 2
-            }]
+            "activities": [
+                {
+                    "cost": 200,
+                    "name": "ski",
+                    "time": "09:00",
+                    "day": 2
+                }
+            ]
         },
         {
             "number": 3,
@@ -63,12 +65,20 @@
         },
         {
             "number": 5,
-            "activities": [{
-                "cost": 800,
-                "name": "Fly home!",
-                "time": "22:00",
-                "day": 5
-            }]
+            "activities": [
+                {
+                    "cost": 800,
+                    "name": "Fly home!",
+                    "time": "22:00",
+                    "day": 5
+                },
+                {
+                    "cost": 20,
+                    "name": "eat ramen",
+                    "time": "10:00",
+                    "day": 5
+                }
+            ]
         }
     ],
     "departingFlight": "2024-05-05",

@@ -67,6 +67,7 @@ public class TravelPlanner implements Writable {
         for (int i = 1; i <= totalDays; i++) {
             totalTripDays.add(new Day(i));
         }
+        EventLog.getInstance().logEvent(new Event("Created a day."));
         return totalTripDays;
     }
 
@@ -87,10 +88,12 @@ public class TravelPlanner implements Writable {
         for (Day d : totalTripDays) {
             for (Activity a : d.getActivitiesList()) {
                 if (a.getName().equals(name)) {
+                    EventLog.getInstance().logEvent(new Event("Found activity."));
                     return a;
                 }
             }
         }
+        EventLog.getInstance().logEvent(new Event("Unable to find activity."));
         return null;
     }
 
@@ -109,6 +112,7 @@ public class TravelPlanner implements Writable {
         json.put("returningFlight", returningFlight);
         json.put("departingFlight", departingFlight);
         json.put("totalTripDays", daysToJson());
+
         return json;
     }
 
