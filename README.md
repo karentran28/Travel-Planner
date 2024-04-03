@@ -87,3 +87,15 @@ Wed Apr 03 12:38:41 PDT 2024
 Saved travel planner to file.
 
 Process finished with exit code 0
+
+## *Phase 4: Task: 3*
+I would refactor my TravelPlannerGUI class to remove the repetitive code that I used for the buttons in my
+GUI. Many of my buttons such as loadplanner and saveplanner have essentially the same implementation so perhaps
+extracting a method then calling that method inside the addLoadButton and addSaveButton methods can be done for
+improvement.
+
+I would also refactor my activity class and remove the day field that is required for each instance of an activity.
+Essentially, the day field is never used functionally in my program rather it is just carried as a field for every
+activity object. Instead of keeping it as a field, I can keep it as a local variable when asking users which day they
+want to create a new activity for then using that local variable to iterate over the days list for the specific day they
+want.
